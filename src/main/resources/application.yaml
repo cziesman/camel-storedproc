@@ -1,0 +1,40 @@
+
+camel:
+  springboot:
+    main-run-controller: true
+    # set this flag to true to enable detailed message tracing within routes
+    tracing: false
+
+spring:
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_ON_EXIT=FALSE
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: false
+
+  mvc:
+    log-request-details: true
+
+logging:
+  level:
+    root: INFO
+    com.redhat.camel: TRACE
+    call-procedure: TRACE
+    handle-message: INFO
+    jpa-poller-route: DEBUG
+    org.h2: TRACE
+
+com:
+  redhat:
+    demo:
+      batch-size: 20
+      number-of-threads: 10
